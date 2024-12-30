@@ -1,0 +1,19 @@
+[Unit]
+Description=Tomcat
+After=network.target
+
+[Service]
+User=tomcat
+WorkingDirectory=/opt/tomcat/latest
+Environment=JRE_HOME=/usr/local/jre-23.0.1
+Environment=JAVA_HOME=/usr/local/openjdk-23.0.1_linux-x64_bin/jdk-23.0.1
+Environment=CATALINA_HOME=/opt/tomcat/latest
+Environment=CATALINE_BASE=/opt/tomcat/latest
+Environment='CATALINA_OPTS=-Dfile.encoding=UTF-8'
+Environment='JAVA_OPTS=-server -Xms512M -Xmx2G -Djava.awt.headless=true -Djava.security.egd=file:/dev/./urandom -Djava.net.preferIPv4Stack=true -Dsun.net.inetaddr.ttl=0'
+ExecStart=/opt/tomcat/latest/bin/catalina.sh run
+ExecStop=/opt/tomcat/latest/bin/shutdown.sh WantedBy=multi-user.target
+SyslogIdentifier=tomcat-%i
+
+[Install]
+WantedBy=multi-user.target

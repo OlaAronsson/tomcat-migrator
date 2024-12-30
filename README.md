@@ -18,8 +18,10 @@ config file for systemctl.
 
 \$ mv tomcat-migrator.tar.gz /opt/tomcat
 
+\$ cd /opt/tomcat
+
 \$ tar zxvf tomcat-migrator.tar.gz
 
-\$ chmod 700 migrate.sh
+\$ chmod 700 ./migrate.sh
 
 \$ ./migrate.sh

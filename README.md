@@ -25,3 +25,9 @@ config file for systemctl.
 \$ chmod 700 ./migrate.sh
 
 \$ ./migrate.sh
+
+Obviously, if you're not upgrading as you only have the one
+tomcat, or, you have an old one but you don't care for the
+config there - then just keep FROM=tomcat_conf in 
+migrate.sh.
+

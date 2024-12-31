@@ -1,6 +1,6 @@
 #!/bin/sh
 
-export PATH="/usr/bin:/usr/sbin:/root/my_bin:/usr/local/tools/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin"
+export PATH="/bin:/sbin:/usr/bin:/usr/sbin:/root/my_bin:/usr/local/tools/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin"
 
 # config
 FROM=tomcat_conf

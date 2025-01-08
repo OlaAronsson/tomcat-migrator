@@ -26,13 +26,18 @@ initialChecks(){
 
 
 doConf(){
+  # base configuration
+  [ ! -d ./$TO/conf ] && echo "./$TO/conf does not exist - cannot configure!" && bail $LINENO
   cp ./$FROM/conf/tomcat-users.xml ./$TO/conf/ || bail $LINENO
   cp ./$FROM/conf/server.xml ./$TO/conf/server.xml || bail $LINENO
-  cp ./$FROM/webapps/manager/WEB-INF/web.xml ./$TO/webapps/manager/WEB-INF/web.xml || bail $LINENO
-  cp ./$FROM//webapps/manager/META-INF/context.xml ./$TO/webapps/manager/META-INF/context.xml || bail $LINENO
   cp ./$FROM//conf/context.xml ./$TO/conf/context.xml || bail $LINENO
-  cp ./$FROM//webapps/examples/META-INF/context.xml ./$TO/webapps/examples/META-INF/context.xml || bail $LINENO
-  cp ./$FROM//webapps/host-manager/WEB-INF/manager.xml ./$TO/webapps/host-manager/WEB-INF/manager.xml || bail $LINENO
+
+  # extras
+  [ -d ./$TO/webapps/manager/WEB-INF ] && cp ./$FROM/webapps/manager/WEB-INF/web.xml ./$TO/webapps/manager/WEB-INF/web.xml || bail $LINENO
+  [ -d ./$TO/webapps/manager/META-INF ] && cp ./$FROM//webapps/manager/META-INF/context.xml ./$TO/webapps/manager/META-INF/context.xml || bail $LINENO
+  [ -d ./$TO/webapps/examples/META-INF ] && cp ./$FROM//webapps/examples/META-INF/context.xml ./$TO/webapps/examples/META-INF/context.xml || bail $LINENO
+  [ -d ./$TO/webapps/host-manager/WEB-INF ] && cp ./$FROM//webapps/host-manager/WEB-INF/manager.xml ./$TO/webapps/host-manager/WEB-INF/manager.xml || bail $LINENO
+
   chown -R tomcat:tomcat ./$TO  || bail $LINENO
   echo "  -SUCCESS : http://localhost:8080/manager/html will be available for user tomcat password tomcat666" 
 }
